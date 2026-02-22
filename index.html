@@ -3,71 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andra Azka | Developer & Visionary</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Personal Space | Aesthetic</title>
     <style>
-        body { background-color: #0f172a; color: #f8fafc; }
-        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glow:hover { box-shadow: 0 0 20px rgba(56, 189, 248, 0.5); border-color: #38bdf8; transition: 0.3s; }
+        :root {
+            --accent: #00d2ff;
+            --bg: #0f172a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top right, #1e293b, #0f172a);
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Latar Belakang Animasi */
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #3a7bd5, #00d2ff);
+            filter: blur(80px);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0.2;
+            animation: move 20s infinite alternate;
+        }
+
+        @keyframes move {
+            from { transform: translate(-20%, -20%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: #94a3b8;
+            margin-top: 10px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 30px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.07);
+            border-color: var(--accent);
+            box-shadow: 0 10px 30px -10px rgba(0, 210, 255, 0.3);
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        .time-display {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            font-weight: 200;
+            color: #64748b;
+        }
     </style>
 </head>
-<body class="font-sans">
+<body>
 
-    <nav class="p-6 flex justify-between items-center max-w-6xl mx-auto">
-        <h1 class="text-2xl font-bold tracking-tighter text-sky-400 underline">ANDRA.DEV</h1>
-        <div class="space-x-6 text-sm font-medium">
-            <a href="#projects" class="hover:text-sky-400">Projects</a>
-            <a href="#vision" class="hover:text-sky-400">Vision</a>
-            <a href="mailto:contact@yourdomain.com" class="bg-sky-500 px-4 py-2 rounded-lg text-white hover:bg-sky-600">Contact</a>
-        </div>
-    </nav>
+    <div class="blob"></div>
+    <div class="time-display" id="clock">00:00:00</div>
 
-    <header class="py-20 px-6 text-center max-w-4xl mx-auto">
-        <h2 class="text-5xl md:text-7xl font-extrabold mb-6 italic">Membangun Masa Depan Melalui Kode & Ambisi.</h2>
-        <p class="text-slate-400 text-lg md:text-xl">
-            Fokus pada Game Development (Godot), AI Architecture, dan Eksplorasi Teknologi Masa Depan.
-        </p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Ruang Tenang</h1>
+            <p>Eksplorasi ide tanpa tekanan proyek besar.</p>
+        </header>
 
-    <main id="projects" class="max-w-6xl mx-auto px-6 py-10">
-        <h3 class="text-2xl font-bold mb-8 border-l-4 border-sky-500 pl-4">Featured Projects</h3>
-        
-        <div class="grid md:grid-cols-2 gap-6">
-            <div class="glass p-8 rounded-2xl glow">
-                <span class="text-xs font-bold text-sky-400 uppercase">Game Development</span>
-                <h4 class="text-2xl font-bold mt-2">99 Night in the Forest</h4>
-                <p class="mt-4 text-slate-400">Project game horor atmosferik yang dikembangkan dengan Godot Engine. Fokus pada mekanika survival dan lingkungan yang mencekam.</p>
-                <div class="mt-6 flex gap-2">
-                    <span class="bg-slate-800 px-3 py-1 rounded text-xs">Godot</span>
-                    <span class="bg-slate-800 px-3 py-1 rounded text-xs">GDScript</span>
-                </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Visi Masa Lalu</h3>
+                <p>Mempelajari sejarah arkeologi yang belum terpecahkan untuk perspektif baru.</p>
             </div>
-
-            <div class="glass p-8 rounded-2xl glow">
-                <span class="text-xs font-bold text-purple-400 uppercase">AI Architecture</span>
-                <h4 class="text-2xl font-bold mt-2">AM "Trinity" System</h4>
-                <h4 class="text-2xl font-bold mt-2 italic text-sm text-slate-500">Uncensored Intelligence</h4>
-                <p class="mt-4 text-slate-400">Integrasi model Llama dan Venice 1.1 untuk menciptakan sistem asisten yang cerdas, efisien, dan tanpa hambatan sensor.</p>
-                <div class="mt-6 flex gap-2">
-                    <span class="bg-slate-800 px-3 py-1 rounded text-xs">Llama</span>
-                    <span class="bg-slate-800 px-3 py-1 rounded text-xs">Venice</span>
-                </div>
+            <div class="card">
+                <h3>Estetika Minimalis</h3>
+                <p>Seni desain yang fokus pada esensi, bukan kerumitan fungsi.</p>
+            </div>
+            <div class="card">
+                <h3>Eksplorasi Ide</h3>
+                <p>Tempat mencatat hal-hal random yang lu temuin hari ini di luar dunia kerja.</p>
             </div>
         </div>
-    </main>
+    </div>
 
-    <section id="vision" class="max-w-6xl mx-auto px-6 py-20">
-        <div class="glass p-10 rounded-3xl text-center bg-gradient-to-b from-transparent to-sky-900/20">
-            <h3 class="text-3xl font-bold mb-4">"Diatas langit masih ada langit"</h3>
-            <p class="text-slate-300 italic max-w-2xl mx-auto">
-                Prinsip yang mendorong saya untuk terus belajar Cybersecurity, Astronomi, dan Fisika. Tujuan akhir saya adalah membangun tower industri dan fasilitas riset mandiri.
-            </p>
-        </div>
-    </section>
-
-    <footer class="py-10 text-center text-slate-500 text-sm border-t border-slate-800">
-        <p>&copy; 2026 Andra Azka. All rights reserved.</p>
-    </footer>
-
+    <script>
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('clock').innerText = now.toLocaleTimeString('id-ID');
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
 </body>
 </html>
